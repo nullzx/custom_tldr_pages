@@ -13,6 +13,10 @@
 
 `tar xvf {{path/to/source.tar[.gz|.bz2|.xz]}}`
 
+- Lis[t] the contents of a tar [f]ile [v]erbosely:
+
+`tar tvf {{path/to/source.tar}}`
+
 - [c]reate an archive and write it to a [f]ile:
 
 `tar cf {{path/to/target.tar}} {{path/to/file1 path/to/file2 ...}}`
@@ -29,9 +33,6 @@
 
 `tar caf {{path/to/target.tar.xz}} {{path/to/file1 path/to/file2 ...}}`
 
-- Lis[t] the contents of a tar [f]ile [v]erbosely:
-
-`tar tvf {{path/to/source.tar}}`
 
 - E[x]tract files matching a pattern from an archive [f]ile:
 

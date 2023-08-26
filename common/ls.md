@@ -2,35 +2,53 @@
 
 > List directory contents.
 > More information: <https://www.gnu.org/software/coreutils/ls>.
+> 下面使用的llh是函数, 它的定义如下
+> llh () {
+>    ls -AlhF | awk '$9 ~ /^\./'
+>    return 0
+> }
+> 下面使用的lla是函数, 它的定义如下
+> lla () {
+>    llh
+>    ls -lhF | tail -n +2
+>    return 0
+> }
 
-- List files one per line:
+- 每行只显示一个条目 alias='ls -1'
+`l`
 
-`ls -1`
+- 按名称排序，长格式，文件大小以字节形式展现 alias=ll='ls -l'
+`ll`
 
-- List all files, including hidden files:
+- 按大小排序，长格式，以合适的方式显示文件大小 alias lls='ls -lhS'
+`lls`
 
-`ls -a`
+- 按文件类型排序, 以合适的方式显示文件大小 alias lle='ls -lhX'
+`lle`
 
-- List all files, with trailing `/` added to directory names:
+- 按最近修改时间排序, 以方便人类读的方式显示大小 alias llmt='ls -lhtr'
+`llmt`
 
-`ls -F`
+- 按最近创建时间排序, 以方便人类读的方式显示大小 alias llct='ls -lhc'
+`llct`
 
-- Long format list (permissions, ownership, size, and modification date) of all files:
+- 仅显示所有隐藏文件和隐藏目录, 隐藏文件按名称排序, 缺点:无法通过颜色来区文件类型
+`llh`
 
-`ls -la`
+- 按名称排序, 先显示隐藏文件和目录, 再显示非隐藏文件和目录, 长格式, 缺点:无法通过颜色来区文件类型
+`lla`
 
-- Long format list with size displayed using human-readable units (KiB, MiB, GiB):
+- 所有条目，按大小排序, 以方便人类读取的方式显示大小 alias llas='ls -AlhS'
+`llas`
 
-`ls -lh`
+- 所有条目, 按文件类型排序, 以合适的方式显示文件大小 alias llae='ls -AlhX'
+`llae`
 
-- Long format list sorted by size (descending):
+- 所有条目, 按最近修改时间排序, 以合适的方式显示文件大小 alias llamt='ls -Alhtr --time-style=iso'
+`llamt`
 
-`ls -lS`
+- 所有条目, 按最近创建时间排序, 以合适的方式显示文件大小 alias llact='ls -Alhct --time-style=iso'
+`llact`
 
-- Long format list of all files, sorted by modification date (oldest first):
-
-`ls -ltr`
-
-- Only list directories:
-
-`ls -d */`
+- 显示给定目录的长格式信息, 而非目录中内容的信息 alias lld='ls -ld'
+`lld`
